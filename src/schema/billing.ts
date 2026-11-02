@@ -5,7 +5,7 @@ import { pengguna } from './auth';
 
 export const tagihanTipeEnum = pgEnum('tagihan_tipe', ['syahriah', 'kegiatan']);
 export const tagihanStatusEnum = pgEnum('tagihan_status', ['belum_bayar', 'sebagian', 'lunas', 'dibatalkan']);
-export const metodePembayaranEnum = pgEnum('metode_pembayaran', ['transfer', 'tunai']);
+export const metodePembayaranEnum = pgEnum('metode_pembayaran', ['transfer', 'tunai', 'subsidi']);
 export const statusPembayaranEnum = pgEnum('status_pembayaran', ['menunggu_verifikasi', 'terverifikasi', 'ditolak']);
 
 export const tagihan = pgTable('tagihan', {
@@ -52,6 +52,7 @@ export const pembayaran = pgTable('pembayaran', {
   isReversal: boolean('is_reversal').notNull().default(false),
   reversalOfId: uuid('reversal_of_id'),
   alasanReversal: text('alasan_reversal'),
+  isSubsidi: boolean('is_subsidi').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull()
 }, (table) => ({
@@ -67,6 +68,7 @@ export const alokasiPembayaran = pgTable('alokasi_pembayaran', {
   alokasiTabungan: bigint('alokasi_tabungan', { mode: 'number' }).notNull().default(0),
   alokasiOperasional: bigint('alokasi_operasional', { mode: 'number' }).notNull().default(0),
   isReversal: boolean('is_reversal').notNull().default(false),
+  isSubsidi: boolean('is_subsidi').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull()
 }, (table) => ({
   pembayaranIdx: index('alokasi_pembayaran_pembayaran_idx').on(table.pembayaranId),

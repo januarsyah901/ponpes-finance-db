@@ -53,7 +53,8 @@ export type SantriStatus = 'aktif' | 'boyong';
 export type SantriKategori = 'pengurus' | 'non_pengurus' | 'mbak_ndalem';
 export type TagihanTipe = 'syahriah' | 'kegiatan';
 export type TagihanStatus = 'belum_bayar' | 'sebagian' | 'lunas' | 'dibatalkan';
-export type MetodePembayaran = 'transfer' | 'tunai';
+export const MetodePembayaran = ['transfer', 'tunai', 'subsidi'] as const;
+export type MetodePembayaran = 'transfer' | 'tunai' | 'subsidi';
 export type StatusPembayaran = 'menunggu_verifikasi' | 'terverifikasi' | 'ditolak';
 export type JenisMutasiTabungan =
   | 'setoran_syahriah'
@@ -185,3 +186,6 @@ export interface ExcelImportValidationResult {
     message: string;
   }>;
 }
+
+export * from './savings';
+export * from './subsidy';

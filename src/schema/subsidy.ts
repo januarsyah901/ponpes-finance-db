@@ -6,7 +6,7 @@ import { ledgerTabungan } from './savings';
 
 export const aturanSubsidi = pgTable('aturan_subsidi', {
   id: uuid('id').defaultRandom().primaryKey(),
-  tagihanKegiatanId: uuid('tagihan_kegiatan_id').notNull().references(() => tagihan.id, { onDelete: 'restrict' }),
+  tagihanKegiatanId: uuid('tagihan_kegiatan_id').references(() => tagihan.id, { onDelete: 'restrict' }),
   nama: text('nama').notNull(),
   nominal: bigint('nominal', { mode: 'number' }).notNull(),
   syaratJson: jsonb('syarat_json').notNull(),

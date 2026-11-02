@@ -7,7 +7,7 @@ export const SantriKategoriSchema = z.enum(['pengurus', 'non_pengurus', 'mbak_nd
 export const UserRoleSchema = z.enum(['super_admin', 'bendahara_komplek', 'santri', 'pengasuh']);
 export const TagihanTipeSchema = z.enum(['syahriah', 'kegiatan']);
 export const TagihanStatusSchema = z.enum(['belum_bayar', 'sebagian', 'lunas', 'dibatalkan']);
-export const MetodePembayaranSchema = z.enum(['transfer', 'tunai']);
+export const MetodePembayaranSchema = z.enum(['transfer', 'tunai', 'subsidi']);
 export const StatusPembayaranSchema = z.enum(['menunggu_verifikasi', 'terverifikasi', 'ditolak']);
 export const JenisMutasiTabunganSchema = z.enum([
   'setoran_syahriah',
@@ -92,9 +92,13 @@ export const SavingsWithdrawalSchema = z.object({
 });
 export type SavingsWithdrawalInput = z.infer<typeof SavingsWithdrawalSchema>;
 
-// Subsidy Rule Creation Schema
+// Re-export savings & subsidy validators
+export * from './savings.validator';
+export * from './subsidy.validator';
+
+// Subsidy Rule Creation Schema (backwards-compatible alias)
 export const SubsidyRuleCreateSchema = z.object({
-  tagihanKegiatanId: z.string().uuid(),
+  tagihanKegiatanId: z.string().uuid().nullable().optional(),
   nama: z.string().min(3, 'Nama aturan subsidi wajib diisi'),
   nominal: z.number().int().positive('Nominal subsidi harus lebih dari 0'),
   syaratJson: z.object({
@@ -102,7 +106,7 @@ export const SubsidyRuleCreateSchema = z.object({
     minLamaMondokBulan: z.number().int().nonnegative().optional(),
     kategoriIds: z.array(z.string().uuid()).optional(),
     komplekIds: z.array(z.string().uuid()).optional(),
-  }),
+  }).passthrough(),
 });
 export type SubsidyRuleCreateInput = z.infer<typeof SubsidyRuleCreateSchema>;
 
