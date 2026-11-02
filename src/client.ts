@@ -3,10 +3,7 @@ import postgres from 'postgres';
 import * as schema from './schema';
 
 export function createDatabaseClient(connectionString?: string) {
-  const connStr = connectionString || process.env.DATABASE_URL;
-  if (!connStr) {
-    throw new Error('DATABASE_URL environment variable is required to create database client');
-  }
+  const connStr = connectionString || process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/ponpes_finance';
 
   const client = postgres(connStr, {
     max: 10,
@@ -18,3 +15,17 @@ export function createDatabaseClient(connectionString?: string) {
 }
 
 export type Database = ReturnType<typeof createDatabaseClient>;
+
+let _instance: Database | null = null;
+export function getDb(): Database {
+  if (!_instance) {
+    _instance = createDatabaseClient();
+  }
+  return _instance;
+}
+
+export const db: Database = new Proxy({} as Database, {
+  get(_target, prop) {
+    return (getDb() as any)[prop];
+  }
+});
