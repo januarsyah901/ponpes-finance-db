@@ -148,12 +148,7 @@ export async function allocatePayment(
             totalTabungan: sql<number>`COALESCE(SUM(${alokasiPembayaran.alokasiTabungan}), 0)::int`,
           })
           .from(alokasiPembayaran)
-          .where(
-            and(
-              eq(alokasiPembayaran.tagihanId, bill.id),
-              eq(alokasiPembayaran.isReversal, false)
-            )
-          );
+          .where(eq(alokasiPembayaran.tagihanId, bill.id));
 
         const priorSavings = Number(priorSavingsResult?.totalTabungan || 0);
         const fixedSavingsCap = 50000;
