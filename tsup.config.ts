@@ -7,6 +7,7 @@ export default defineConfig({
     'src/schema/index.ts',
     'src/validators/index.ts',
     'src/types/index.ts',
+    'src/services/index.ts',
   ],
   format: ['cjs', 'esm'],
   dts: true,

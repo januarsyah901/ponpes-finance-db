@@ -4,3 +4,7 @@ export * from './reversal';
 export * from './savings';
 export * from './event-billing';
 export * from './subsidy';
+export * from './expenses';
+export * from './reports';
+export * from './arrears';
+export * from './audit';
