@@ -3,7 +3,7 @@ import postgres from 'postgres';
 import * as schema from './schema';
 
 export function createDatabaseClient(connectionString?: string) {
-  const connStr = connectionString || process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/ponpes_finance';
+  const connStr = connectionString || process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:54329/ponpes_finance';
 
   const client = postgres(connStr, {
     max: 10,

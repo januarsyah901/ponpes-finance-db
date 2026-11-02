@@ -24,7 +24,12 @@ export const SantriImportRowSchema = z.object({
   nama: z.string().min(1, 'Nama wajib diisi').trim(),
   komplekKode: z.string().min(1, 'Kode komplek wajib diisi').trim(),
   kategoriKode: SantriKategoriSchema,
-  tanggalMasuk: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Format tanggal YYYY-MM-DD'),
+  tanggalMasuk: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Format tanggal YYYY-MM-DD').refine((val) => {
+    const [y, m, d] = val.split('-').map(Number);
+    if (m < 1 || m > 12 || d < 1 || d > 31) return false;
+    const date = new Date(val);
+    return !isNaN(date.getTime()) && date.toISOString().startsWith(val);
+  }, 'Tanggal tidak valid'),
   nomorWhatsapp: z.string().min(9, 'Nomor WhatsApp tidak valid').trim(),
   namaWali: z.string().optional(),
   nomorWhatsappWali: z.string().optional(),

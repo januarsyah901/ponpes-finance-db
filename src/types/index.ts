@@ -66,26 +66,34 @@ export type PengeluaranStatus = 'aktif' | 'dibatalkan';
 
 // Business Logic Invariant Contracts
 export interface AllocatePaymentInput {
+  pembayaranId?: string;
   santriId: string;
   nominal: number; // Integer Rupiah
   metode: MetodePembayaran;
-  tanggalBayar: Date;
+  tanggalBayar: Date | string;
   catatan?: string;
   buktiUrl?: string;
   adminUserId: string;
+  isCashDesk?: boolean;
+}
+
+export interface AllocatedBillItem {
+  tagihanId: string;
+  judul: string;
+  bulan?: number | null;
+  tahun?: number | null;
+  tabunganAllocated: number;
+  operasionalAllocated: number;
+  totalAllocated: number;
+  remainingBill: number;
+  status: 'lunas' | 'sebagian';
 }
 
 export interface AllocationResult {
   pembayaranId: string;
-  allocatedBills: Array<{
-    tagihanId: string;
-    judul: string;
-    tabunganAllocated: number;
-    operasionalAllocated: number;
-    totalAllocated: number;
-    remainingBill: number;
-    status: 'lunas' | 'sebagian';
-  }>;
+  santriId?: string;
+  nominalTotal?: number;
+  allocatedBills: AllocatedBillItem[];
   totalTabungan: number;
   totalOperasional: number;
   excessCredit: number;
