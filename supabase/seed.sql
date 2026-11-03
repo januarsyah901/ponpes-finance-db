@@ -59,19 +59,19 @@ INSERT INTO santri (id, nis, nama, komplek_id, kategori_id, tanggal_masuk, statu
 ON CONFLICT (nis) DO NOTHING;
 
 -- 6. Users (Admin, Bendahara, Santri)
--- password123 hash: $2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K
+-- password123 hash: $2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2
 INSERT INTO pengguna (id, username, password_hash, nama, role, is_first_login, is_active, santri_id) VALUES
-('50000000-0000-0000-0000-000000000001', 'admin', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Super Administrator Pondok', 'super_admin', false, true, NULL),
-('50000000-0000-0000-0000-000000000002', 'bendahara_putra', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Ust. Muhsin (Bendahara Putra)', 'bendahara_komplek', false, true, NULL),
-('50000000-0000-0000-0000-000000000003', 'bendahara_putri1', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Ustdz. Maryam (Bendahara Khadijah)', 'bendahara_komplek', false, true, NULL),
-('50000000-0000-0000-0000-000000000004', 'bendahara_putri2', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Ustdz. Khadijah (Bendahara Aisyah)', 'bendahara_komplek', false, true, NULL),
-('50000000-0000-0000-0000-000000000005', 'bendahara_putri3', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Ustdz. Halimah (Bendahara Fatimah)', 'bendahara_komplek', false, true, NULL),
-('50000000-0000-0000-0000-000000000006', '2024001', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Ahmad Fauzi', 'santri', true, true, '40000000-0000-0000-0000-000000000001'),
-('50000000-0000-0000-0000-000000000007', '2024002', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Muhammad Rizqi', 'santri', true, true, '40000000-0000-0000-0000-000000000002'),
-('50000000-0000-0000-0000-000000000008', '2024003', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Zulfikar Ali', 'santri', true, true, '40000000-0000-0000-0000-000000000003'),
-('50000000-0000-0000-0000-000000000009', '2024004', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Fatimah Az-Zahra', 'santri', true, true, '40000000-0000-0000-0000-000000000004'),
-('50000000-0000-0000-0000-000000000010', '2024005', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Siti Aminah', 'santri', false, false, '40000000-0000-0000-0000-000000000005'),
-('50000000-0000-0000-0000-000000000011', '2024006', '$2a$10$wE1.a17F40kQp5y8hTf5yeHqYg26J3r4qF1E2m4N9wF7o8y0u7i2K', 'Nurul Hidayati', 'santri', true, true, '40000000-0000-0000-0000-000000000006')
+('50000000-0000-0000-0000-000000000001', 'admin', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Super Administrator Pondok', 'super_admin', false, true, NULL),
+('50000000-0000-0000-0000-000000000002', 'bendahara_putra', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Ust. Muhsin (Bendahara Putra)', 'bendahara_komplek', false, true, NULL),
+('50000000-0000-0000-0000-000000000003', 'bendahara_putri1', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Ustdz. Maryam (Bendahara Khadijah)', 'bendahara_komplek', false, true, NULL),
+('50000000-0000-0000-0000-000000000004', 'bendahara_putri2', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Ustdz. Khadijah (Bendahara Aisyah)', 'bendahara_komplek', false, true, NULL),
+('50000000-0000-0000-0000-000000000005', 'bendahara_putri3', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Ustdz. Halimah (Bendahara Fatimah)', 'bendahara_komplek', false, true, NULL),
+('50000000-0000-0000-0000-000000000006', '2024001', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Ahmad Fauzi', 'santri', true, true, '40000000-0000-0000-0000-000000000001'),
+('50000000-0000-0000-0000-000000000007', '2024002', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Muhammad Rizqi', 'santri', true, true, '40000000-0000-0000-0000-000000000002'),
+('50000000-0000-0000-0000-000000000008', '2024003', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Zulfikar Ali', 'santri', true, true, '40000000-0000-0000-0000-000000000003'),
+('50000000-0000-0000-0000-000000000009', '2024004', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Fatimah Az-Zahra', 'santri', true, true, '40000000-0000-0000-0000-000000000004'),
+('50000000-0000-0000-0000-000000000010', '2024005', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Siti Aminah', 'santri', false, false, '40000000-0000-0000-0000-000000000005'),
+('50000000-0000-0000-0000-000000000011', '2024006', '$2a$10$DJ4Q/1XN9Npq6bNxeraKoe0JAX/QCMv/MA06KST6RPMNgGM2jvlw2', 'Nurul Hidayati', 'santri', true, true, '40000000-0000-0000-0000-000000000006')
 ON CONFLICT (username) DO NOTHING;
 
 -- 7. Bendahara Multi-Complex Scoping (`pengguna_komplek`)
